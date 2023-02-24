@@ -11,9 +11,11 @@ class ViewController: UIViewController {
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ImageDownloadCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         tableView.dataSource = self
+        tableView.delegate = self
         return tableView
     }()
     
@@ -60,9 +62,18 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ImageDownloadCell else {
+            return UITableViewCell()
+        }
+        
         return cell
     }
     
     
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
+    }
 }
