@@ -24,10 +24,18 @@ class ViewController: UIViewController {
         button.setTitle("Load All Images", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(loadAllImages), for: .touchUpInside)
         return button
     }()
     
-    let images = ["1", "2", "3", "4", "5"]
+    var loadAll: Bool = false
+    let imageDownloadCell = ImageDownloadCell()
+    
+    let images = ["https://images.mubicdn.net/images/film/28295/cache-19491-1445874015/image-w1280.jpg",
+                  "https://64.media.tumblr.com/1a9ef21e3248dd3dc084793ef91f63c9/tumblr_plawj3VnSQ1vxlpwio1_1280.png",
+                  "https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/766-/v19h2JVw1zLNC2e1ylU5zqkuPabDq4_original.jpg",
+                  "https://assets.mubicdn.net/images/film/281688/image-w1280.jpg?1651137929",
+                  "https://assets.deutschlandfunk.de/FILE_063e088fcfba3712e12192504964105d/1920x1080.jpg?t=1597486159439"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +62,12 @@ class ViewController: UIViewController {
         loadAllBtn.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -16).isActive = true
         loadAllBtn.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
+    
+    @objc func loadAllImages() {
+        debugPrint("loadAllImages")
+        self.loadAll = true
+        tableView.reloadData()
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -65,7 +79,21 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ImageDownloadCell else {
             return UITableViewCell()
         }
-        
+        cell.imageLoad = {
+            if let url = URL(string: self.images[indexPath.row]) {
+                cell.thumbnail.load(url: url)
+            }
+        }
+        if loadAll {
+            cell.thumbnail.image = UIImage(systemName: "photo")
+            if let url = URL(string: self.images[indexPath.row]) {
+                cell.thumbnail.load(url: url)
+                if indexPath.row == images.count - 1 {
+                    debugPrint("end")
+                }
+                //self.loadAll = false
+            }
+        }
         return cell
     }
     

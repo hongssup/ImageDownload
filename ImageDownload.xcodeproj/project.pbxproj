@@ -13,6 +13,7 @@
 		3675606829A7C82E0052D739 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3675606729A7C82E0052D739 /* Assets.xcassets */; };
 		3675606B29A7C82E0052D739 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3675606929A7C82E0052D739 /* LaunchScreen.storyboard */; };
 		3675607329A884A90052D739 /* ImageDownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675607229A884A90052D739 /* ImageDownloadCell.swift */; };
+		3675607529A8EF370052D739 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675607429A8EF370052D739 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3675606A29A7C82E0052D739 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3675606C29A7C82E0052D739 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3675607229A884A90052D739 /* ImageDownloadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadCell.swift; sourceTree = "<group>"; };
+		3675607429A8EF370052D739 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				3675606029A7C82C0052D739 /* SceneDelegate.swift */,
 				3675606229A7C82C0052D739 /* ViewController.swift */,
 				3675607229A884A90052D739 /* ImageDownloadCell.swift */,
+				3675607429A8EF370052D739 /* Extensions.swift */,
 				3675606729A7C82E0052D739 /* Assets.xcassets */,
 				3675606929A7C82E0052D739 /* LaunchScreen.storyboard */,
 				3675606C29A7C82E0052D739 /* Info.plist */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3675607529A8EF370052D739 /* Extensions.swift in Sources */,
 				3675606329A7C82C0052D739 /* ViewController.swift in Sources */,
 				3675607329A884A90052D739 /* ImageDownloadCell.swift in Sources */,
 				3675605F29A7C82C0052D739 /* AppDelegate.swift in Sources */,

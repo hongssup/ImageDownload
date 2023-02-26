@@ -20,7 +20,7 @@ class ImageDownloadCell: UITableViewCell {
         let view = UIProgressView()
         view.trackTintColor = .systemGray5
         view.progressTintColor = .systemBlue
-        view.progress = 0.1
+        view.progress = 0.5
         return view
     }()
     
@@ -32,6 +32,8 @@ class ImageDownloadCell: UITableViewCell {
         button.addTarget(self, action: #selector(onClickLoadBtn), for: .touchUpInside)
         return button
     }()
+    
+    var imageLoad: (() -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,7 +55,7 @@ class ImageDownloadCell: UITableViewCell {
         
         thumbnail.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         thumbnail.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        thumbnail.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        thumbnail.widthAnchor.constraint(equalToConstant: 128).isActive = true
         thumbnail.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
         loadBtn.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
@@ -67,7 +69,9 @@ class ImageDownloadCell: UITableViewCell {
     }
     
     @objc func onClickLoadBtn(_ sender: UIButton) {
-        print("onclick")
+        self.thumbnail.image = UIImage(systemName: "photo")
+        debugPrint("onClick")
+        self.imageLoad?()
     }
 }
 
