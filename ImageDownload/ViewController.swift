@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     
     var loadAll: Bool = false
     let imageDownloadCell = ImageDownloadCell()
+    var cellHeight: CGFloat = 84
     
     let images = ["https://images.mubicdn.net/images/film/28295/cache-19491-1445874015/image-w1280.jpg",
                   "https://64.media.tumblr.com/1a9ef21e3248dd3dc084793ef91f63c9/tumblr_plawj3VnSQ1vxlpwio1_1280.png",
@@ -52,15 +53,19 @@ class ViewController: UIViewController {
         
         let safeArea = self.view.safeAreaLayoutGuide
         
-        tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: loadAllBtn.topAnchor, constant: -16).isActive = true
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
+            tableView.heightAnchor.constraint(equalToConstant: cellHeight * CGFloat(images.count)),
+            tableView.bottomAnchor.constraint(equalTo: loadAllBtn.topAnchor, constant: -20)
+        ])
         
-        loadAllBtn.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16).isActive = true
-        loadAllBtn.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16).isActive = true
-        loadAllBtn.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -16).isActive = true
-        loadAllBtn.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        NSLayoutConstraint.activate([
+            loadAllBtn.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            loadAllBtn.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
+            loadAllBtn.heightAnchor.constraint(equalToConstant: 44)
+        ])
     }
     
     @objc func loadAllImages() {
@@ -91,17 +96,14 @@ extension ViewController: UITableViewDataSource {
                 if indexPath.row == images.count - 1 {
                     debugPrint("end")
                 }
-                //self.loadAll = false
             }
         }
         return cell
     }
-    
-    
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 84
+        return cellHeight
     }
 }

@@ -55,7 +55,7 @@ class ImageDownloadCell: UITableViewCell {
         
         thumbnail.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         thumbnail.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        thumbnail.widthAnchor.constraint(equalToConstant: 128).isActive = true
+        thumbnail.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.32).isActive = true
         thumbnail.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
         loadBtn.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
